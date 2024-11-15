@@ -23,7 +23,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*": [
+    "*.ts": [
       "npm run format:fix",
       "npm run lint:fix"
     ]

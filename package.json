@@ -9,6 +9,12 @@
     "lint:check": "eslint .",
     "format:fix": "prettier . --write",
     "format:check": "prettier . --check",
+    "generate": "dotenv -e .env.dev npx prisma generate",
+    "migrate:dev": "dotenv -e .env.dev npx prisma migrate dev",
+    "migrate:prod": "dotenv -e .env.prod npx prisma migrate deploy",
+    "migrate:test": "dotenv -e .env.test npx prisma migrate deploy",
+    "migrate:deploy": "dotenv -e .env.dev npx prisma migrate deploy",
+    "migrate:reset": "dotenv -e .env.dev npx prisma migrate reset",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -16,6 +22,9 @@
       "npm run format:fix",
       "npm run lint:fix"
     ]
+  },
+  "prisma": {
+    "schema": "src/prisma/schema"
   },
   "author": "Manthan Sharma <techmanthansharma@gmail.com>",
   "license": "ISC",
@@ -28,17 +37,20 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.4.2",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "nodemon": "^3.1.7",
     "prettier": "3.3.3",
+    "prisma": "^5.22.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.14.0"
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "awilix": "^12.0.3",
     "dotenv": "^16.4.5",
     "express": "^5.0.1",

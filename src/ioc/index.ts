@@ -1,5 +1,6 @@
 import { asValue, createContainer } from "awilix";
 import { logger } from "../utils";
+import { PrismaClient } from "@prisma/client";
 
 const container = createContainer({
   injectionMode: "CLASSIC",
@@ -8,9 +9,12 @@ const container = createContainer({
 
 let isInjected = false;
 
+const prismaClient = new PrismaClient();
+
 const injectDependencies = () => {
   if (!isInjected) {
     container.register({
+      prismaClient: asValue(prismaClient),
       logger: asValue(logger),
     });
 
